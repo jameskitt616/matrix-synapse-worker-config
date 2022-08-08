@@ -1,5 +1,11 @@
 # Create and Configure Federation Sender and Generic Wrokers
 
+## Table of contents
+ - [Create Worker configs](https://github.com/jameskitt616/matrix-synapse-worker-config#create-worker-configs)
+ - [Create Services](https://github.com/jameskitt616/matrix-synapse-worker-config#create-services)
+ - [Update homeserver.yaml](https://github.com/jameskitt616/matrix-synapse-worker-config#update-homeserveryaml)
+ - [Restart Synapse and the workers](https://github.com/jameskitt616/matrix-synapse-worker-config#restart-synapse-and-the-workers)
+
 ## Create Worker configs
 
 ### Create log-configs
@@ -14,7 +20,7 @@ create a `workers` directory within the matrix-synapse folder
 
 `mkdir /etc/matrix-synapse/workers`
 
-[and create all the workers](https://github.com/jameskitt616/matrix-synapse-worker-config/tree/master/etc/matrix-synapse/workers)
+and create [all the workers](https://github.com/jameskitt616/matrix-synapse-worker-config/tree/master/etc/matrix-synapse/workers)
 
 ## Create Services
 
