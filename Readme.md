@@ -1,18 +1,28 @@
 # Create and Configure Federation Sender and Generic Wrokers
 
-Create a Service for the federation senders
+## Create Worker configs
+
+### Create log-configs
+
+[nano /etc/matrix-synapse/federation-worker-log.yaml](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/matrix-synapse/federation-worker-log.yaml)
+
+[nano /etc/matrix-synapse/generic-worker-log.yaml](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/matrix-synapse/generic-worker-log.yaml)
+
+### Create worker-configs
+
+create a `workers` directory within the matrix-synapse folder
+
+`mkdir /etc/matrix-synapse/workers`
+
+[and create all the workers](https://github.com/jameskitt616/matrix-synapse-worker-config/tree/master/etc/matrix-synapse/workers)
+
+## Create Services
 
 [nano /etc/systemd/system/matrix-synapse-federation-sender\\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-federation-sender\\@.service)
 
-Create a service for the generic workers
-
 [nano /etc/systemd/system/matrix-synapse-worker\\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-worker\\@.service)
 
-Create a target service to restart synapse and the workers at once
-
 [nano /etc/systemd/system/matrix-synapse.target](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse.target)
-
-Create or update your synapse service to listen to the target service
 
 [nano /etc/systemd/system/matrix-synapse.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse.service)
 
@@ -80,3 +90,7 @@ redis:
   #
   #password: <secret_password>
 ```
+
+## Restart Synapse and the workers
+
+`sudo systemctl restart matrix-synapse.target`
