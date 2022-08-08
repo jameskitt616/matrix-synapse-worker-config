@@ -2,11 +2,11 @@
 
 Create a Service for the federation senders
 
-[nano /etc/systemd/system/matrix-synapse-federation-sender\\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-federation-sender\@.service)
+[nano /etc/systemd/system/matrix-synapse-federation-sender\\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-federation-sender\\@.service)
 
 Create a service for the generic workers
 
-[nano /etc/systemd/system/matrix-synapse-worker\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-worker\@.service)
+[nano /etc/systemd/system/matrix-synapse-worker\\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-worker\\@.service)
 
 Create a target service to restart synapse and the workers at once
 
