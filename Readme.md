@@ -1,70 +1,19 @@
-Create Service for federation senders
-`sudo nano /etc/systemd/system/matrix-synapse-federation-sender\@.service`
+# Create and Configure Federation Sender and Generic Wrokers
 
-```
-[Unit]
-Description=Synapse %i
-AssertPathExists=/etc/matrix-synapse/workers/%i.yaml
+Create a Service for the federation senders
+[nano /etc/systemd/system/matrix-synapse-federation-sender\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-federation-sender\@.service)
 
-# This service should be restarted when the synapse target is restarted.
-PartOf=matrix-synapse.target
-ReloadPropagatedFrom=matrix-synapse.target
+Create a service for the generic workers
+[nano /etc/systemd/system/matrix-synapse-worker\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-worker\@.service)
 
-# if this is started at the same time as the main, let the main process start
-# first, to initialise the database schema.
-After=matrix-synapse.service
+Create a target service to restart synapse and the workers at once
+[nano /etc/systemd/system/matrix-synapse.target](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse.target)
 
-[Service]
-Type=notify
-NotifyAccess=main
-User=matrix-synapse
-WorkingDirectory=/var/lib/matrix-synapse
-EnvironmentFile=-/etc/default/matrix-synapse
-ExecStart=/opt/venvs/matrix-synapse/bin/python -m synapse.app.federation_sender --config-path=/etc/matrix-synapse/homeserver.yaml --config-path=/etc/matrix-synapse/conf.d/ --config-path=/etc/matrix-synapse/wo>ExecReload=/bin/kill -HUP $MAINPID
-Restart=always
-RestartSec=3
-SyslogIdentifier=matrix-synapse-%i
+Create or update your synapse service to listen to the target service
+[nano /etc/systemd/system/matrix-synapse.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse.service)
 
-[Install]
-WantedBy=matrix-synapse.target
-```
-
-Create a service for the workers
-`sudo nano /etc/systemd/system/matrix-synapse-worker\@.service`
-
-```
-[Unit]
-Description=Synapse %i
-AssertPathExists=/etc/matrix-synapse/workers/%i.yaml
-
-# This service should be restarted when the synapse target is restarted.
-PartOf=matrix-synapse.target
-ReloadPropagatedFrom=matrix-synapse.target
-
-# if this is started at the same time as the main, let the main process start
-# first, to initialise the database schema.
-After=matrix-synapse.service
-
-[Service]
-Type=notify
-NotifyAccess=main
-User=matrix-synapse
-WorkingDirectory=/var/lib/matrix-synapse
-EnvironmentFile=-/etc/default/matrix-synapse
-ExecStart=/opt/venvs/matrix-synapse/bin/python -m synapse.app.generic_worker --config-path=/etc/matrix-synapse/homeserver.yaml --config-path=/etc/matrix-synapse/conf.d/ --config-path=/etc/matrix-synapse/worke>ExecReload=/bin/kill -HUP $MAINPID
-Restart=always
-RestartSec=3
-SyslogIdentifier=matrix-synapse-%i
-
-[Install]
-WantedBy=matrix-synapse.target
-```
-
-
-
-within the homeserver.yaml
-
-
+Update the Workers section in your `homeserver.yaml`
+Also define a random secret string at the `worker_replication_secret` line, also update this in your [workers configs](https://github.com/jameskitt616/matrix-synapse-worker-config/tree/master/etc/matrix-synapse/workers).
 ```
 ## Workers ##
 
