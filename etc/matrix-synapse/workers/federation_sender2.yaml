@@ -1,0 +1,15 @@
+worker_app: synapse.app.federation_sender
+worker_name: federation_sender2
+
+# The replication listener on the main synapse process.
+worker_replication_host: 127.0.0.1
+worker_replication_http_port: 9093
+
+worker_listeners:
+  - type: http
+    port: 8035
+    resources:
+      - names: [replication]
+
+worker_log_config: /etc/matrix-synapse/federation-worker-log.yaml
+worker_replication_secret: "use worker_replication_secret self defined in homeserver.yaml"
