@@ -34,9 +34,9 @@ and create [all the workers](https://github.com/jameskitt616/matrix-synapse-work
 
 ## Update homeserver.yaml
 
-Update the Workers section in your `homeserver.yaml`
+Update the workers-section in your `homeserver.yaml`
 
-Also define a random secret string at the `worker_replication_secret` line, also update this in your [workers configs](https://github.com/jameskitt616/matrix-synapse-worker-config/tree/master/etc/matrix-synapse/workers).
+Define a random secret string at the `worker_replication_secret` line, also update this in your [workers configs](https://github.com/jameskitt616/matrix-synapse-worker-config/tree/master/etc/matrix-synapse/workers).
 ```
 ## Workers ##
 
@@ -82,19 +82,7 @@ worker_replication_secret: "define own random string"
 # using workers (unless using old style direct TCP configuration).
 #
 redis:
-  # Uncomment the below to enable Redis support.
-  #
   enabled: true
-
-  # Optional host and port to use to connect to redis. Defaults to
-  # localhost and 6379
-  #
-  #host: localhost
-  #port: 6379
-
-  # Optional password if configured on the Redis instance
-  #
-  #password: <secret_password>
 ```
 
 ## Restart Synapse and the workers
