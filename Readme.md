@@ -1,5 +1,9 @@
 # Create and Configure Federation Sender and Generic Wrokers
 
+## Disclaimer
+
+I did not test this, i lowkey just copy pasted my Synapse-Worker configs, i did not cross-test this!
+
 ## Table of contents
  - [Create Worker configs](https://github.com/jameskitt616/matrix-synapse-worker-config#create-worker-configs)
  - [Create Services](https://github.com/jameskitt616/matrix-synapse-worker-config#create-services)
