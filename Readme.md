@@ -2,7 +2,7 @@
 
 Create a Service for the federation senders
 
-[nano /etc/systemd/system/matrix-synapse-federation-sender\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-federation-sender\@.service)
+[nano /etc/systemd/system/matrix-synapse-federation-sender\\@.service](https://github.com/jameskitt616/matrix-synapse-worker-config/blob/master/etc/systemd/system/matrix-synapse-federation-sender\@.service)
 
 Create a service for the generic workers
 
@@ -19,6 +19,7 @@ Create or update your synapse service to listen to the target service
 ## Update homeserver.yaml
 
 Update the Workers section in your `homeserver.yaml`
+
 Also define a random secret string at the `worker_replication_secret` line, also update this in your [workers configs](https://github.com/jameskitt616/matrix-synapse-worker-config/tree/master/etc/matrix-synapse/workers).
 ```
 ## Workers ##
