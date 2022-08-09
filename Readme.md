@@ -1,4 +1,4 @@
-# Create and Configure Federation Sender and Generic Wrokers
+# Create and Configure Federation Sender and Generic Workers
 
 ## Disclaimer
 
