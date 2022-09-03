@@ -1,4 +1,4 @@
-# Create and Configure Federation Sender and Generic Workers
+# Create and Configure Federation Sender and Generic Workers for Matrix Synapse
 
 ## Disclaimer
 
